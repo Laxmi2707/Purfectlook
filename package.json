@@ -1,13 +1,15 @@
 {
-  "author": "stormozov <web@stormozov.ru> (https://github.com/stormozov)",
-  "name": "@stormozov/frontend-promo-italia",
-  "version": "5.17.0",
-  "description": "Promo Italia — салон красоты в г. Самара",
-  "homepage": "https://stormozov.github.io/promo-italia.ru/",
-  "browserslist": [
-    "last 2 versions",
-    "> 5%"
-  ],
+  "name": "purfectlook",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "webpack --config webpack.prod.config.js",
+    "dev": "webpack serve --config webpack.config.js --mode development"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.0",
