@@ -11,3 +11,6 @@ npm install # или yarn install
 ```
 
 
+```bash
+npm run dev # или yarn install
+```
