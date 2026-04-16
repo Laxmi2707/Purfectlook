@@ -7,7 +7,7 @@
     "dev": "webpack serve --config webpack.config.js --mode development"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
