@@ -1,0 +1,33 @@
+.reviews-section {
+  padding-top: 270px;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 60px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.reviews {
+  width: max-content;
+  margin: 50px auto 0;
+  box-shadow: 0px 4px 20px 0px rgba(239, 185, 185, 0.50);
+  border-radius: 10px;
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
+  }
+
+  &__block {
+    width: 560px;
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+
+    @media screen and (max-width: 640px) {
+      width: 100%;
+    }
+  }
+}

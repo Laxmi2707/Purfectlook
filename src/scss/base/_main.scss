@@ -1,0 +1,191 @@
+body {
+  font-size: 18px;
+  color: $text;
+  background-color: $body-background-color;
+
+  &.fixed {
+    overflow-y: hidden;
+  }
+}
+
+.container {
+  max-width: 1260px;
+  width: 100%;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 120%;
+  letter-spacing: 0.055rem;
+
+  @media screen and (max-width: 992px) {
+    font-size: 35px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 27px;
+  }
+}
+
+h2 {
+  font-size: 35px;
+  font-weight: 500;
+  font-style: italic;
+  color: $accent-color;
+
+  @media screen and (max-width: 992px) {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 900;
+
+  @media screen and (max-width: 992px) {
+    font-size: 18px;
+  }
+}
+
+p,
+span,
+a,
+button
+{
+  font-family: 'Sofia Sans', 'Arial', sans-serif;
+}
+
+p {
+  line-height: 150%;
+
+  @media screen and (max-width: 500px) {
+    font-size: 16px;
+  }
+}
+
+a,
+button
+{
+  transition: 0.4s ease;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.phone {
+  color: $text;
+}
+
+.phone,
+.address
+{
+  font-weight: 900;
+  letter-spacing: 0.0225rem;
+}
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 400px) {
+    display: block;
+  }
+}
+
+.btn {
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 12px 24px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    margin-right: 10px;
+  }
+
+  &.primary {
+    color: $white;
+    background-color: $accent-color;
+    margin-right: 10px;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 30px;
+      height: 200px;
+      margin-left: 60px;
+      background: $white;
+      opacity: 0.5;
+      position: absolute;
+      left: -40px;
+      top: -100px;
+      z-index: 1;
+      transform: rotate(45deg);
+      transition: all 0.1s;
+      animation-name: slideme;
+      animation-duration: 3s;
+      animation-delay: 0.05s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 2px white, 0 0 0 4px $accent-color;
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 100%;
+      margin: 0 0 10px;
+    }
+  }
+  &.green {
+    color: $whatsapp-color;
+    border: 1px solid $whatsapp-color;
+
+    &:hover {
+      color: $white;
+      background-color: $whatsapp-color;
+    }
+  }
+  &.bright-tangerine {
+    color: $accent-color;
+    border: 1px solid $accent-color;
+
+    &:hover {
+      color: $white;
+      background-color: $accent-color;
+    }
+  }
+}
+
+.transition-between-sections {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-style: italic;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 24px;
+}

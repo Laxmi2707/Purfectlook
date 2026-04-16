@@ -1,0 +1,45 @@
+.best-qualities {
+  padding: 100px 0;
+
+  @media screen and (max-width: 768px) {
+    padding: 50px 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+}
+
+.qualities {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+    @media screen and (max-width: 1072px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 530px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    border-radius: 6px;
+    background-color: $white;
+    box-shadow: 0px 0px 20px 0px rgba(255, 207, 207, 0.40);
+    padding: 24px;
+    width: 100%;
+  }
+
+  &__title {
+    color: $accent-color;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 24px;
+  }
+}

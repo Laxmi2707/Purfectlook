@@ -1,0 +1,57 @@
+.footer {
+  padding: 60px 0;
+
+  .container {
+    &--footer {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(2, max-content);
+      }
+
+      @media screen and (max-width: 874px) {
+        grid-template-columns: max-content;
+        justify-content: center;
+
+        text-align: center;
+      }
+    }
+  }
+
+  p, a {
+    color: $pink-brown;
+  }
+
+  a {
+    &:hover {
+      color: $text;
+    }
+  }
+
+  &__links {
+    @media screen and (max-width: 800px) {
+      margin: 24px 0;
+    }
+
+    a {
+      @media screen and (max-width: 800px) {
+        display: block;
+        width: max-content;
+        margin: 0 auto;
+      }
+
+      &:not(:last-child) {
+        margin-right: 36px;
+
+        @media screen and (max-width: 800px) {
+          margin-right: auto;
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
+}

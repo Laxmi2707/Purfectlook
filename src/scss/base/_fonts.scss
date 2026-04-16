@@ -1,0 +1,81 @@
+/**
+ * Fonts
+*/
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Black.eot');
+  src: local('Playfair Display Black'), local('PlayfairDisplay-Black'),
+    url('../fonts/PlayfairDisplay/PlayfairDisplay-Black.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/PlayfairDisplay/PlayfairDisplay-Black.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay/PlayfairDisplay-Black.woff') format('woff'),
+    url('../fonts/PlayfairDisplay/PlayfairDisplay-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay/PlayfairDisplay-MediumItalic.eot');
+  src: local('Playfair Display Medium Italic'), local('PlayfairDisplay-MediumItalic'),
+    url('../fonts/PlayfairDisplay/PlayfairDisplay-MediumItalic.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/PlayfairDisplay/PlayfairDisplay-MediumItalic.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay/PlayfairDisplay-MediumItalic.woff') format('woff'),
+    url('../fonts/PlayfairDisplay/PlayfairDisplay-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sofia Sans';
+  src: url('../fonts/SofiaSans/SofiaSans-Italic.eot');
+  src: local('Sofia Sans Italic'), local('SofiaSans-Italic'),
+    url('../fonts/SofiaSans/SofiaSans-Italic.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/SofiaSans/SofiaSans-Italic.woff2') format('woff2'),
+    url('../fonts/SofiaSans/SofiaSans-Italic.woff') format('woff'),
+    url('../fonts/SofiaSans/SofiaSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sofia Sans';
+  src: url('../fonts/SofiaSans/SofiaSans-Regular.eot');
+  src: local('Sofia Sans Regular'), local('SofiaSans-Regular'),
+    url('../fonts/SofiaSans/SofiaSans-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/SofiaSans/SofiaSans-Regular.woff2') format('woff2'),
+    url('../fonts/SofiaSans/SofiaSans-Regular.woff') format('woff'),
+    url('../fonts/SofiaSans/SofiaSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sofia Sans';
+  src: url('../fonts/SofiaSans/SofiaSans-Medium.eot');
+  src: local('Sofia Sans Medium'), local('SofiaSans-Medium'),
+    url('../fonts/SofiaSans/SofiaSans-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/SofiaSans/SofiaSans-Medium.woff2') format('woff2'),
+    url('../fonts/SofiaSans/SofiaSans-Medium.woff') format('woff'),
+    url('../fonts/SofiaSans/SofiaSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sofia Sans';
+  src: url('../fonts/SofiaSans/SofiaSans-Black.eot');
+  src: local('Sofia Sans Black'), local('SofiaSans-Black'),
+    url('../fonts/SofiaSans/SofiaSans-Black.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/SofiaSans/SofiaSans-Black.woff2') format('woff2'),
+    url('../fonts/SofiaSans/SofiaSans-Black.woff') format('woff'),
+    url('../fonts/SofiaSans/SofiaSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
