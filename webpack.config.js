@@ -7,6 +7,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const environment = require('./configuration/environment');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 // HTML templates
 const templateFiles = fs.readdirSync(environment.paths.source)
   .filter((file) => ['.html', '.ejs'].includes(path.extname(file).toLowerCase()))
@@ -20,6 +22,12 @@ const htmlPluginEntries = templateFiles.map((template) =>
     inject: true,
     filename: template.output,
     template: path.resolve(environment.paths.source, template.input),
+    minify: isProduction
+      ? {
+          removeComments: true,
+          collapseWhitespace: true,
+        }
+      : false,
   })
 );
 
@@ -29,31 +37,34 @@ module.exports = {
   },
 
   output: {
-    filename: 'js/[name].js',
+    filename: 'js/[name].[contenthash].js',
     path: environment.paths.output,
+    clean: true, // auto clean dist/
   },
 
   module: {
     rules: [
-      // SCSS / CSS
+      // ✅ SCSS / CSS
       {
-        test: /\.((c|sa|sc)ss)$/i,
+        test: /\.(c|sa|sc)ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          isProduction
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
           'css-loader',
           'postcss-loader',
           'sass-loader',
         ],
       },
 
-      // JS
+      // ✅ JS
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
 
-      // Images
+      // ✅ Images
       {
         test: /\.(png|gif|jpe?g|svg)$/i,
         type: 'asset',
@@ -62,7 +73,7 @@ module.exports = {
         },
       },
 
-      // Fonts
+      // ✅ Fonts
       {
         test: /\.(eot|ttf|woff|woff2)$/,
         type: 'asset',
@@ -75,7 +86,7 @@ module.exports = {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: 'css/[name].[contenthash].css',
     }),
 
     new CleanWebpackPlugin(),
@@ -85,10 +96,8 @@ module.exports = {
         {
           from: path.resolve(environment.paths.source, 'images'),
           to: path.resolve(environment.paths.output, 'images'),
-          noErrorOnMissing: true, // ✅ prevents crash
+          noErrorOnMissing: true,
         },
-
-        // ✅ SAFE videos handling (optional, won't crash if missing)
         {
           from: path.resolve(environment.paths.source, 'videos'),
           to: path.resolve(environment.paths.output, 'videos'),
@@ -96,8 +105,26 @@ module.exports = {
         },
       ],
     }),
-  ].concat(htmlPluginEntries),
 
+    ...htmlPluginEntries,
+  ],
+
+  optimization: {
+    minimize: isProduction,
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+
+  devServer: {
+    static: {
+      directory: environment.paths.output,
+    },
+    port: 8080,
+    hot: true,
+    open: true,
+  },
+
+  mode: isProduction ? 'production' : 'development',
   target: 'web',
-  mode: 'development',
 };
