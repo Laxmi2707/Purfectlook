@@ -86,3 +86,7 @@
     "node": "18.x"
   }
 }
+"scripts": {
+  "build": "npm run production",
+  "production": "webpack --config configuration/webpack.prod.config.js --mode=production"
+}
