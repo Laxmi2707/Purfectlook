@@ -1,49 +1,60 @@
-const path = require("path");
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common.js");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-module.exports = merge(common, {
-  mode: "production",
+module.exports = {
+  entry: './src/js/app.js',
 
   output: {
-    filename: "js/[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
+    filename: 'js/[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
   },
 
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        test: /\.s?css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]',
+        },
+      },
+      {
+        test: /\.(woff|woff2|ttf|eot)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]',
+        },
       },
     ],
   },
 
   plugins: [
     new CleanWebpackPlugin(),
+
     new MiniCssExtractPlugin({
-      filename: "css/[name].[contenthash].css",
+      filename: 'css/[name].[contenthash].css',
+    }),
+
+    new HTMLWebpackPlugin({
+      template: './src/index.html',
     }),
   ],
 
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin(),
-      new CssMinimizerPlugin(),
-    ],
-    splitChunks: {
-      chunks: "all",
-    },
-    runtimeChunk: "single",
-  },
-
-  performance: {
-    hints: false,
-  },
-});
+  mode: 'production',
+};
