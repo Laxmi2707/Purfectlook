@@ -1,37 +1,33 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-
-const common = require('./webpack.dev.config'); // reuse your current config
+const path = require("path");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = merge(common, {
-  mode: 'production',
+  mode: "production",
 
   output: {
-    filename: 'js/[name].[contenthash].js',
-    path: path.resolve(__dirname, '../dist'),
-    clean: true,
+    filename: "js/[name].[contenthash].js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
 
   module: {
     rules: [
       {
-        test: /\.((c|sa|sc)ss)$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
 
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash].css',
+      filename: "css/[name].[contenthash].css",
     }),
   ],
 
@@ -41,5 +37,13 @@ module.exports = merge(common, {
       new TerserPlugin(),
       new CssMinimizerPlugin(),
     ],
+    splitChunks: {
+      chunks: "all",
+    },
+    runtimeChunk: "single",
+  },
+
+  performance: {
+    hints: false,
   },
 });
